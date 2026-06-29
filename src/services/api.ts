@@ -119,6 +119,18 @@ export const farmerAPI = {
   getMandiPrices: () => request('/farmer/mandi-prices'),
 };
 
+// ─── Government Schemes ──────────────────────────────────────────
+export const schemesAPI = {
+  getAllSchemes: (params?: { category?: string; search?: string }) => {
+    const q = new URLSearchParams(params as any).toString();
+    return request(`/schemes${q ? '?' + q : ''}`);
+  },
+  getSchemeById: (id: string) => request(`/schemes/${id}`),
+  getCategories: () => request('/schemes/categories/list'),
+  checkEligibility: (body: any) =>
+    request('/schemes/eligibility-check', { method: 'POST', body: JSON.stringify(body) }),
+};
+
 // ─── Notifications ───────────────────────────────────────────────
 export const notificationsAPI = {
   getAll: () => request('/notifications'),

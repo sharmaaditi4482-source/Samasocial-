@@ -1,0 +1,589 @@
+{
+  "schemes": [
+    {
+      "id": "pm-kisan",
+      "name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+      "category": "Income Support",
+      "description": "Direct income support to farmers to supplement their financial needs for agricultural activities.",
+      "benefits": [
+        "₹6,000 per year per farmer in three equal installments",
+        "₹2,000 paid every 4 months",
+        "No land holding limit for small/marginal farmers",
+        "Direct Bank Transfer (DBT)",
+        "No paperwork required"
+      ],
+      "eligibility": [
+        "Indian citizens with cultivable land",
+        "Small and marginal farmers",
+        "Landholding up to 2 hectares",
+        "Must not have income more than ₹10 lakhs per annum",
+        "Should not be in profession like doctor, engineer, etc."
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Land ownership proof",
+        "Bank account details",
+        "Crop certification (if required)",
+        "Identity proof"
+      ],
+      "howToApply": [
+        "Step 1: Visit pm-kisan.gov.in",
+        "Step 2: Click on 'Farmer Corner'",
+        "Step 3: Select 'New Farmer Registration'",
+        "Step 4: Enter Aadhaar number and other details",
+        "Step 5: Verify through bank",
+        "Step 6: Submit and receive confirmation"
+      ],
+      "applicationMethod": "Online (pm-kisan.gov.in) / Offline at Common Service Center (CSC)",
+      "officialWebsite": "https://pm-kisan.gov.in",
+      "faqItems": [
+        {
+          "question": "How often will I receive the payment?",
+          "answer": "You will receive ₹2,000 every 4 months, totaling ₹6,000 per year."
+        },
+        {
+          "question": "Can I apply if I don't have a bank account?",
+          "answer": "No, a bank account is mandatory. The payment is transferred directly to your bank account."
+        },
+        {
+          "question": "What is the income limit?",
+          "answer": "Your annual income should not exceed ₹10 lakhs. Self-employed professionals are excluded."
+        },
+        {
+          "question": "Can tenant farmers apply?",
+          "answer": "No, only landowners can apply. Tenant farmers are not eligible."
+        }
+      ]
+    },
+    {
+      "id": "pmfby",
+      "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      "category": "Crop Insurance",
+      "description": "Crop insurance scheme to protect farmers against crop loss due to natural calamities and unforeseen events.",
+      "benefits": [
+        "Comprehensive coverage for crops",
+        "Premium subsidy up to 99%",
+        "Claim settlement within 72 hours",
+        "Mobile app for reporting crop loss",
+        "No maximum claim limit",
+        "Coverage from sowing to harvesting"
+      ],
+      "eligibility": [
+        "All farmers (landlords and tenants)",
+        "Farmer engaged in animal husbandry",
+        "Farmer engaged in fish farming",
+        "Agricultural land in India"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card or voter ID",
+        "Land ownership proof or lease deed",
+        "Bank passbook",
+        "Receipts of seeds/fertilizer purchase",
+        "Photos of crops (in case of claim)",
+        "Occupation certificate (if tenant farmer)"
+      ],
+      "howToApply": [
+        "Step 1: Contact local bank or insurance agent",
+        "Step 2: Provide land ownership proof and bank details",
+        "Step 3: Fill application form with crop details",
+        "Step 4: Pay premium (government subsidized)",
+        "Step 5: Receive policy document",
+        "Step 6: Register using PMFBY mobile app"
+      ],
+      "applicationMethod": "Online (pmfby.gov.in) / Offline at authorized bank branches / CSC centers",
+      "officialWebsite": "https://pmfby.gov.in",
+      "faqItems": [
+        {
+          "question": "What crops are covered under PMFBY?",
+          "answer": "Crops vary by state. Common crops include rice, wheat, cotton, sugarcane, groundnut, etc."
+        },
+        {
+          "question": "How long does it take to get claim?",
+          "answer": "Claims are settled within 72 hours of verification."
+        },
+        {
+          "question": "What if my crop is partially damaged?",
+          "answer": "Partial damage claims are considered if loss exceeds 33% of yield."
+        },
+        {
+          "question": "Is there any premium waiver?",
+          "answer": "Yes, the government subsidizes major portion of the premium."
+        }
+      ]
+    },
+    {
+      "id": "kcc",
+      "name": "Kisan Credit Card (KCC)",
+      "category": "Credit Facility",
+      "description": "Credit facility for farmers for cultivational and marketing needs of crops.",
+      "benefits": [
+        "Easy credit access up to 4 times of land value",
+        "Interest subsidy of 2-4% on time payment",
+        "Loans up to ₹3 lakhs without collateral",
+        "Flexible repayment options",
+        "No processing fee",
+        "Life insurance coverage"
+      ],
+      "eligibility": [
+        "Indian citizens engaged in agriculture",
+        "Age 18 to 75 years",
+        "Farmers with cultivable land",
+        "Tenant farmers with lease deeds",
+        "Self-help groups (SHGs)",
+        "Joint liability groups (JLGs)"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Land ownership proof or lease deed",
+        "Photos (4 passport size)",
+        "Address proof",
+        "Bank account details",
+        "Income certificate",
+        "Land record certificate"
+      ],
+      "howToApply": [
+        "Step 1: Visit nearest bank branch",
+        "Step 2: Collect KCC application form",
+        "Step 3: Fill form with land and personal details",
+        "Step 4: Submit with required documents",
+        "Step 5: Bank conducts land verification",
+        "Step 6: Credit limit decided",
+        "Step 7: Receive KCC",
+        "Step 8: Access funds as needed"
+      ],
+      "applicationMethod": "Offline at bank branches / Online through bank portals",
+      "officialWebsite": "https://www.nabard.org/en/credit-delivery-system/kisan-credit-card",
+      "faqItems": [
+        {
+          "question": "What is the maximum loan amount under KCC?",
+          "answer": "Maximum is 4 times the value of land holding, up to ₹3,00,000 without collateral."
+        },
+        {
+          "question": "How long is the KCC valid for?",
+          "answer": "KCC is valid for 5 years with annual review."
+        },
+        {
+          "question": "Can I repay the loan early?",
+          "answer": "Yes, early repayment is allowed without any penalty."
+        },
+        {
+          "question": "Is there life insurance with KCC?",
+          "answer": "Yes, there is life insurance coverage for the loan amount in case of death."
+        }
+      ]
+    },
+    {
+      "id": "pmksy",
+      "name": "PM Krishi Sinchai Yojana (PMKSY)",
+      "category": "Irrigation Development",
+      "description": "Scheme to enhance productivity through assured irrigation, covering drip irrigation, sprinkler systems, and watershed development.",
+      "benefits": [
+        "Subsidy up to 60-80% on irrigation equipment",
+        "Sprinkler and drip irrigation support",
+        "Pipe network installation",
+        "Water harvesting structures",
+        "Per drop, more crop efficiency",
+        "Soil health improvement"
+      ],
+      "eligibility": [
+        "Farmers with valid land rights",
+        "Land with irrigation potential",
+        "Farmers in water-stressed areas",
+        "Groups of farmers (common irrigation systems)",
+        "Farmers in designated blocks"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Land ownership proof",
+        "Surveyed map of land",
+        "Water availability certificate",
+        "Bank account details",
+        "Electricity connection proof"
+      ],
+      "howToApply": [
+        "Step 1: Check PMKSY eligibility in your area",
+        "Step 2: Contact district agriculture office",
+        "Step 3: Collect application form",
+        "Step 4: Submit with required documents",
+        "Step 5: Field inspection by officials",
+        "Step 6: Approval and fund release",
+        "Step 7: Implement irrigation system",
+        "Step 8: Complete project and claim subsidy"
+      ],
+      "applicationMethod": "Offline at district agriculture office / Collector office",
+      "officialWebsite": "https://pmksy.gov.in",
+      "faqItems": [
+        {
+          "question": "What types of irrigation are supported?",
+          "answer": "Drip irrigation, sprinkler systems, pipe networks, and micro-irrigation are supported."
+        },
+        {
+          "question": "What is the subsidy percentage?",
+          "answer": "Subsidy ranges from 60-80% depending on the category and location."
+        },
+        {
+          "question": "Can I install both drip and sprinkler?",
+          "answer": "Yes, based on crop type and water availability, both can be combined."
+        },
+        {
+          "question": "How long does project completion take?",
+          "answer": "Project completion typically takes 6-12 months."
+        }
+      ]
+    },
+    {
+      "id": "soil-health",
+      "name": "Soil Health Card Scheme",
+      "category": "Soil Management",
+      "description": "Scheme to distribute soil health cards to farmers for balanced and appropriate use of fertilizers and nutrients.",
+      "benefits": [
+        "Free soil testing",
+        "Customized fertilizer recommendations",
+        "Reduced fertilizer usage",
+        "Improved crop productivity",
+        "Cost savings on fertilizers",
+        "Better soil quality",
+        "Digital soil health records"
+      ],
+      "eligibility": [
+        "All farmers in India",
+        "Landowners and tenant farmers",
+        "No land size restriction",
+        "Farmers willing to submit soil sample"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Land ownership proof or lease deed",
+        "Contact number",
+        "Soil sample (collected at testing center)"
+      ],
+      "howToApply": [
+        "Step 1: Visit nearest Soil Testing Laboratory",
+        "Step 2: Provide Aadhaar and land proof",
+        "Step 3: Submit soil samples (from 5-6 spots)",
+        "Step 4: Wait for 10-15 days for analysis",
+        "Step 5: Collect soil health card",
+        "Step 6: Receive fertilizer recommendations",
+        "Step 7: Implement recommendations"
+      ],
+      "applicationMethod": "Offline at Soil Testing Laboratories / Agricultural Extension Centers",
+      "officialWebsite": "https://soilhealth.dac.gov.in",
+      "faqItems": [
+        {
+          "question": "How often should I test my soil?",
+          "answer": "Soil testing should be done once every 2-3 years for best results."
+        },
+        {
+          "question": "Is soil testing free?",
+          "answer": "Yes, soil testing and health card are completely free."
+        },
+        {
+          "question": "How is soil sample collected?",
+          "answer": "Samples are collected from different spots of your field and mixed together."
+        },
+        {
+          "question": "What information does soil health card contain?",
+          "answer": "It contains NPK (nitrogen, phosphorus, potassium) levels and fertilizer recommendations."
+        }
+      ]
+    },
+    {
+      "id": "e-nam",
+      "name": "e-NAM (Electronic National Agriculture Market)",
+      "category": "Market Access",
+      "description": "Pan-India e-commerce platform connecting farmers with buyers for selling agricultural produce.",
+      "benefits": [
+        "Better prices for produce",
+        "Direct market access",
+        "Transparent bidding process",
+        "No middlemen involvement",
+        "24/7 market access",
+        "Quality assessment",
+        "Government guarantee",
+        "Low transaction costs"
+      ],
+      "eligibility": [
+        "Registered farmers and traders",
+        "Age 18 years and above",
+        "Valid bank account",
+        "Pan India reach"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Bank account details",
+        "Mobile number",
+        "Email address",
+        "Address proof",
+        "Photo (for seller registration)"
+      ],
+      "howToApply": [
+        "Step 1: Visit enam.gov.in",
+        "Step 2: Click 'Register as Seller'",
+        "Step 3: Enter Aadhaar and mobile number",
+        "Step 4: Fill registration form",
+        "Step 5: Upload required documents",
+        "Step 6: Verify through OTP",
+        "Step 7: Receive seller ID",
+        "Step 8: Start listing produce"
+      ],
+      "applicationMethod": "Online (enam.gov.in) / Offline through APMC offices",
+      "officialWebsite": "https://enam.gov.in",
+      "faqItems": [
+        {
+          "question": "Which commodities can I sell on e-NAM?",
+          "answer": "All agricultural commodities including cereals, pulses, oilseeds, spices, and vegetables."
+        },
+        {
+          "question": "What are the transaction charges?",
+          "answer": "Transaction charges are minimal and transparent, typically 1-2%."
+        },
+        {
+          "question": "How is payment processed?",
+          "answer": "Payment is made through bank transfer within 2-3 days of sale."
+        },
+        {
+          "question": "Can I sell directly without going through APMC?",
+          "answer": "Yes, e-NAM provides direct access to buyers, bypassing traditional APMC."
+        }
+      ]
+    },
+    {
+      "id": "pm-shram",
+      "name": "PM Shram Yogi Maandhan (PMSYM)",
+      "category": "Pension & Social Security",
+      "description": "Pension scheme for unorganized workers providing monthly pension from age 60.",
+      "benefits": [
+        "₹3,000 per month pension from age 60",
+        "Government co-contribution equal to employee contribution",
+        "Family pension of 50% on death before 60",
+        "Portable scheme (work anywhere)",
+        "No restriction on nature of work"
+      ],
+      "eligibility": [
+        "Age 18-40 years",
+        "Monthly income ≤ ₹15,000",
+        "Not covered by ESIC, EPF, NPS",
+        "Not income tax payer",
+        "Unorganized workers (construction, street vendors, etc.)"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Mobile number",
+        "Bank account details",
+        "Income proof",
+        "Address proof"
+      ],
+      "howToApply": [
+        "Step 1: Visit pmsym.gov.in",
+        "Step 2: Click 'Enroll Now'",
+        "Step 3: Enter Aadhaar number",
+        "Step 4: Fill personal details",
+        "Step 5: Select contribution amount",
+        "Step 6: Verify mobile OTP",
+        "Step 7: Get enrollment confirmation",
+        "Step 8: Start monthly contribution"
+      ],
+      "applicationMethod": "Online (pmsym.gov.in) / Through bank branches / CSC",
+      "officialWebsite": "https://pmsym.gov.in",
+      "faqItems": [
+        {
+          "question": "What is the monthly contribution?",
+          "answer": "Monthly contribution ranges from ₹55 to ₹200 depending on age."
+        },
+        {
+          "question": "What if I miss a payment?",
+          "answer": "Missed payments can be made in lump sum with penalty."
+        },
+        {
+          "question": "Can I withdraw before age 60?",
+          "answer": "In case of disability, early withdrawal is allowed."
+        },
+        {
+          "question": "Is government contribution mandatory?",
+          "answer": "Yes, government contributes equal amount to build the corpus."
+        }
+      ]
+    },
+    {
+      "id": "ayushman",
+      "name": "Ayushman Bharat - PMJAY",
+      "category": "Health Insurance",
+      "description": "World's largest health assurance scheme providing free treatment at empaneled hospitals.",
+      "benefits": [
+        "₹5 lakhs free health insurance per family",
+        "Coverage of 1,350+ procedures",
+        "Cashless treatment at empaneled hospitals",
+        "No waiting period",
+        "Free pre and post hospitalization",
+        "Coverage for children and adults",
+        "Portable scheme across India"
+      ],
+      "eligibility": [
+        "BPL families from SECC data",
+        "APL families (state specific)",
+        "Landless agricultural families",
+        "Annual income based criteria",
+        "Street vendors and sanitation workers",
+        "Construction workers"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Ration card or SECC documents",
+        "Income proof",
+        "Address proof",
+        "Contact number",
+        "Bank account details"
+      ],
+      "howToApply": [
+        "Step 1: Check eligibility on mera.pmjay.gov.in",
+        "Step 2: Apply online or visit CSC",
+        "Step 3: Provide required documents",
+        "Step 4: Get e-card number",
+        "Step 5: Print ABHA card",
+        "Step 6: Visit empaneled hospital",
+        "Step 7: Avail cashless treatment"
+      ],
+      "applicationMethod": "Online (mera.pmjay.gov.in) / Through CSC / State offices",
+      "officialWebsite": "https://pmjay.gov.in",
+      "faqItems": [
+        {
+          "question": "What is covered under PMJAY?",
+          "answer": "Hospitalization charges, surgery, medicines, diagnostics - total ₹5 lakhs per family."
+        },
+        {
+          "question": "How do I find empaneled hospitals?",
+          "answer": "Visit mera.pmjay.gov.in and search hospitals in your area."
+        },
+        {
+          "question": "Is pre-existing disease covered?",
+          "answer": "Yes, there is no waiting period for pre-existing diseases."
+        },
+        {
+          "question": "How long is the card valid?",
+          "answer": "The card is valid for 1 year and automatically renewed."
+        }
+      ]
+    },
+    {
+      "id": "pm-awas",
+      "name": "PM Awas Yojana (Gramin)",
+      "category": "Housing",
+      "description": "Scheme to provide basic houses with modern amenities to homeless rural families.",
+      "benefits": [
+        "₹1,20,000 per house construction",
+        "Government assistance for construction",
+        "MGNREGA unskilled labor support",
+        "Free basic amenities",
+        "Land provided by state government",
+        "Financing options available"
+      ],
+      "eligibility": [
+        "Households without house",
+        "Annual income ≤ ₹1 lakh",
+        "SC/ST priority",
+        "Women headed household priority",
+        "Rural areas only",
+        "Homeless families from PRIs"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Income proof",
+        "Land ownership proof",
+        "Address proof",
+        "BPL card or income certificate",
+        "Photo ID"
+      ],
+      "howToApply": [
+        "Step 1: Contact Gram Pradhan or local authority",
+        "Step 2: Get application form",
+        "Step 3: Fill with required details",
+        "Step 4: Submit with documents",
+        "Step 5: Verification by PRP",
+        "Step 6: Final selection and approval",
+        "Step 7: Receive assistance amount",
+        "Step 8: Start house construction"
+      ],
+      "applicationMethod": "Offline through Gram Panchayat / Block offices",
+      "officialWebsite": "https://pmayg.nic.in",
+      "faqItems": [
+        {
+          "question": "Can I choose my own contractor?",
+          "answer": "Yes, you can hire your own contractor or take government support."
+        },
+        {
+          "question": "How long does it take to complete house?",
+          "answer": "Typically 6-12 months depending on weather and availability of materials."
+        },
+        {
+          "question": "Is there any contribution from beneficiary?",
+          "answer": "No, government provides ₹1,20,000 fully. Additional cost is beneficiary's choice."
+        },
+        {
+          "question": "Can I sell the house after construction?",
+          "answer": "Yes, after occupancy for minimum 10 years."
+        }
+      ]
+    },
+    {
+      "id": "mgnrega",
+      "name": "MGNREGA (Mahatma Gandhi National Rural Employment Guarantee Act)",
+      "category": "Employment & Livelihood",
+      "description": "Social security scheme guaranteeing 100 days of paid employment to rural households annually.",
+      "benefits": [
+        "₹258 per day minimum wage (may vary by state)",
+        "100 days guaranteed employment per financial year",
+        "Work within 5 km radius",
+        "Equal wages for men and women",
+        "Social security benefits",
+        "Skill development opportunities",
+        "No upper age limit"
+      ],
+      "eligibility": [
+        "Age above 18 years",
+        "Willing to do manual work",
+        "Rural household member",
+        "Indian citizen",
+        "Registered in MGNREGA database",
+        "No income limit"
+      ],
+      "requiredDocuments": [
+        "Aadhaar Card",
+        "Employment Registration Form",
+        "Bank account details",
+        "Address proof",
+        "Photo ID",
+        "Proof of residence"
+      ],
+      "howToApply": [
+        "Step 1: Visit Gram Panchayat or Block office",
+        "Step 2: Collect employment registration form",
+        "Step 3: Fill form with personal details",
+        "Step 4: Submit with Aadhaar and documents",
+        "Step 5: Get registered",
+        "Step 6: Request work from Gram Panchayat",
+        "Step 7: Receive work order",
+        "Step 8: Execute work and get wages"
+      ],
+      "applicationMethod": "Offline at Gram Panchayat / Block Development Office",
+      "officialWebsite": "https://nrega.nic.in",
+      "faqItems": [
+        {
+          "question": "How are wages paid?",
+          "answer": "Wages are paid directly to your bank account within 15 days of completion."
+        },
+        {
+          "question": "What types of work are available?",
+          "answer": "Agricultural work, road construction, watershed development, and other rural development."
+        },
+        {
+          "question": "Can I work more than 100 days?",
+          "answer": "Only 100 days are guaranteed. Additional work may be available if funds permit."
+        },
+        {
+          "question": "Is there any age limit?",
+          "answer": "No, there is no upper age limit. Anyone above 18 can work."
+        }
+      ]
+    }
+  ]
+}

@@ -19,6 +19,7 @@ import JobSearch from './components/JobSearch';
 import FarmerHub from './components/FarmerHub';
 import VerificationSystem from './components/VerificationSystem';
 import AdminDashboard from './components/AdminDashboard';
+import GovernmentSchemes from './components/GovernmentSchemes';
 
 export const App: React.FC = () => {
   const {
@@ -41,6 +42,7 @@ export const App: React.FC = () => {
     { id: 'voice-registration', label: 'Voice Register' },
     { id: 'farmer-hub', label: 'Farmer Hub' },
     { id: 'verification', label: 'Verification' },
+    { id: 'government-schemes', label: 'Govt. Schemes' },
     { id: 'admin', label: 'Admin Panel' },
   ];
 
@@ -71,6 +73,8 @@ export const App: React.FC = () => {
         return <FarmerHub onNavigate={setActivePage} />;
       case 'verification':
         return <VerificationSystem onNavigate={setActivePage} />;
+      case 'government-schemes':
+        return <GovernmentSchemes onNavigate={setActivePage} />;
       case 'admin':
         return <AdminDashboard />;
       default:

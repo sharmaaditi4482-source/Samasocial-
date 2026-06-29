@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Search,
   Mic,
@@ -15,24 +15,35 @@ import {
   ArrowRight,
   TrendingUp,
   CheckCircle2,
+  AlertCircle,
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { jobsAPI } from '../services/api';
 
 interface JobSearchProps {
   onNavigate: (page: string) => void;
 }
 
-const mockJobs = [
-  { id: 1, title: 'Harvesting Helper (Crop Cutting)', employer: 'Sunil Choudhary (Farmer)', trustScore: 97, pay: '₹450/day', distance: '1.5 km', location: 'Ganaur Village, Sonipat', category: 'Agriculture', verified: true, date: 'Starts 21 Jun' },
-  { id: 2, title: 'House Painter (2 BHK Exterior)', employer: 'Rajesh Sharma', trustScore: 92, pay: '₹750/day', distance: '3.2 km', location: 'Model Town, Sonipat', category: 'Painter', verified: true, date: '2-Day Assignment' },
-  { id: 3, title: 'Urgent Home Electrician Repair', employer: 'Karan Mehra', trustScore: 89, pay: '₹600/day', distance: '4.8 km', location: 'Narela, Delhi Border', category: 'Electrician', verified: false, date: '1-Day Task' },
-  { id: 4, title: 'Wooden Wardrobe Carpenter Helper', employer: 'Vikas Furniture Shop', trustScore: 95, pay: '₹700/day', distance: '2.0 km', location: 'Industrial Area, Sonipat', category: 'Carpenter', verified: true, date: '5-Day Job' },
-  { id: 5, title: 'Daily Wage Loader & Unloader', employer: 'Grain Mandi Warehouse', trustScore: 98, pay: '₹500/day', distance: '0.8 km', location: 'New APMC Mandi, Sonipat', category: 'Daily Wage', verified: true, date: 'Starts Immediate' },
-  { id: 6, title: 'Personal Car Driver for Local Trip', employer: 'Dr. Alok Verma', trustScore: 96, pay: '₹800/day', distance: '5.5 km', location: 'Sector 15, Sonipat', category: 'Driver', verified: true, date: 'Single Day' },
-];
+interface Job {
+  id: string | number;
+  title: string;
+  employer: string;
+  trust_score?: number;
+  trustScore?: number;
+  pay: string;
+  distance?: string;
+  location: string;
+  category: string;
+  verified?: number | boolean;
+  date?: string;
+}
 
 export const JobSearch: React.FC<JobSearchProps> = () => {
   const { darkMode } = useTheme();
+  
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -42,14 +53,43 @@ export const JobSearch: React.FC<JobSearchProps> = () => {
   const [voiceSearchText, setVoiceSearchText] = useState('');
   
   // Voice apply micro-states
-  const [applyingJobId, setApplyingJobId] = useState<number | null>(null);
+  const [applyingJobId, setApplyingJobId] = useState<string | number | null>(null);
   const [isApplyingVoiceActive, setIsApplyingVoiceActive] = useState(false);
   const [applyVoiceText, setApplyVoiceText] = useState('Say "I want to apply" to submit...');
-  const [appliedJobs, setAppliedJobs] = useState<number[]>([]);
+  const [appliedJobs, setAppliedJobs] = useState<(string | number)[]>([]);
 
   const categories = ['All', 'Agriculture', 'Carpenter', 'Painter', 'Electrician', 'Plumber', 'Driver', 'Daily Wage'];
 
-  const filteredJobs = mockJobs.filter((job) => {
+  // Fetch jobs from API
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await jobsAPI.getJobs();
+        const jobsData = response.jobs || [];
+        setJobs(jobsData);
+      } catch (err) {
+        console.error('Error fetching jobs:', err);
+        setError('Failed to load jobs. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, []);
+
+  // Normalize job data and filter
+  const normalizedJobs = jobs.map(job => ({
+    ...job,
+    trustScore: job.trust_score || job.trustScore || 0,
+    verified: job.verified ? true : false,
+    distance: job.distance || 'Unknown distance',
+    date: job.date || 'Flexible dates',
+  }));
+
+  const filteredJobs = normalizedJobs.filter((job) => {
     const matchesSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           job.employer.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCat = selectedCategory === 'All' || job.category === selectedCategory;
@@ -72,7 +112,7 @@ export const JobSearch: React.FC<JobSearchProps> = () => {
     }
   };
 
-  const handleVoiceApply = (jobId: number) => {
+  const handleVoiceApply = (jobId: string | number) => {
     setApplyingJobId(jobId);
     setIsApplyingVoiceActive(true);
     setApplyVoiceText('Say "Mujhe kaam chahiye" or "I want to apply"...');
@@ -180,105 +220,125 @@ export const JobSearch: React.FC<JobSearchProps> = () => {
         </div>
       )}
 
+      {/* Error Banner */}
+      {error && (
+        <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/25 flex items-center gap-3">
+          <AlertCircle className="w-5 h-5 text-red-500" />
+          <span className="text-sm font-semibold text-red-600 dark:text-red-400">{error}</span>
+        </div>
+      )}
+
+      {/* Loading State */}
+      {loading && (
+        <div className="col-span-full text-center py-12">
+          <div className="inline-flex items-center gap-2">
+            <div className="w-2 h-2 bg-govBlue-500 rounded-full animate-pulse" />
+            <span className="text-slate-500 dark:text-slate-400 font-semibold">Loading jobs...</span>
+          </div>
+        </div>
+      )}
+
       {/* Job Listings Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <div
-              key={job.id}
-              className={`${darkMode ? 'glass-card-dark' : 'glass-card'} p-6 border flex flex-col justify-between hover:shadow-xl hover:border-govBlue-500/20 transition-all ${
-                job.verified ? 'border-slate-200/50 dark:border-slate-800' : 'border-slate-200 dark:border-slate-800'
-              }`}
-            >
-              <div>
-                <div className="flex justify-between items-start mb-3">
-                  <span className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-500 uppercase">
-                    {job.category}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Employer Trust:</span>
-                    <span className="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded">{job.trustScore}%</span>
+      {!loading && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <div
+                key={job.id}
+                className={`${darkMode ? 'glass-card-dark' : 'glass-card'} p-6 border flex flex-col justify-between hover:shadow-xl hover:border-govBlue-500/20 transition-all ${
+                  job.verified ? 'border-slate-200/50 dark:border-slate-800' : 'border-slate-200 dark:border-slate-800'
+                }`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-bold text-slate-500 uppercase">
+                      {job.category}
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Employer Trust:</span>
+                      <span className="text-xs font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded">{job.trustScore}%</span>
+                    </div>
+                  </div>
+
+                  <h3 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>{job.title}</h3>
+                  
+                  <div className="flex items-center gap-2 mt-2">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Employer: <span className="font-bold">{job.employer}</span></p>
+                    {job.verified && (
+                      <span className="inline-flex items-center text-[9px] bg-emerald-500/10 text-emerald-600 px-1.5 py-0.2 rounded border border-emerald-500/20">
+                        <ShieldCheck className="w-2.5 h-2.5 mr-0.5" />
+                        Govt OK
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-y-2 gap-x-4 mt-5 text-sm text-slate-600 dark:text-slate-300">
+                    <div className="flex items-center gap-1.5">
+                      <TrendingUp className="w-4 h-4 text-slate-400" />
+                      <span className="font-bold text-slate-900 dark:text-white">{job.pay}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <MapPin className="w-4 h-4 text-slate-400" />
+                      <span>{job.distance} away</span>
+                    </div>
+                    <div className="col-span-2 flex items-center gap-1.5 text-xs text-slate-400">
+                      <Clock className="w-4 h-4" />
+                      <span>{job.location} • {job.date}</span>
+                    </div>
                   </div>
                 </div>
 
-                <h3 className={`text-lg font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>{job.title}</h3>
-                
-                <div className="flex items-center gap-2 mt-2">
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Employer: <span className="font-bold">{job.employer}</span></p>
-                  {job.verified && (
-                    <span className="inline-flex items-center text-[9px] bg-emerald-500/10 text-emerald-600 px-1.5 py-0.2 rounded border border-emerald-500/20">
-                      <ShieldCheck className="w-2.5 h-2.5 mr-0.5" />
-                      Govt OK
-                    </span>
+                {/* Application CTA */}
+                <div className="mt-6 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 flex gap-3">
+                  {appliedJobs.includes(job.id) ? (
+                    <button className="flex-1 py-2.5 rounded-lg bg-emerald-500 text-white font-bold text-sm cursor-default flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-4.5 h-4.5" />
+                      Application Submitted
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => handleVoiceApply(job.id)}
+                        className="flex-1 py-2.5 rounded-lg bg-gradient-to-r from-govBlue-500 to-teal-600 hover:shadow-lg text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 group"
+                      >
+                        <Mic className="w-4 h-4 animate-pulse" />
+                        Apply by Voice
+                      </button>
+                      <button
+                        onClick={() => setAppliedJobs((prev) => [...prev, job.id])}
+                        className={`px-4 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-colors ${
+                          darkMode ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
+                        }`}
+                      >
+                        Apply Manual
+                      </button>
+                    </>
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-y-2 gap-x-4 mt-5 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="flex items-center gap-1.5">
-                    <TrendingUp className="w-4 h-4 text-slate-400" />
-                    <span className="font-bold text-slate-900 dark:text-white">{job.pay}</span>
+                {/* Voice Apply Modal Overlay Simulation Inside Card */}
+                {applyingJobId === job.id && isApplyingVoiceActive && (
+                  <div className="mt-3 p-3 rounded-lg bg-teal-500/10 border border-teal-500/35 flex flex-col items-center gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <Volume2 className="w-4 h-4 text-teal-600 dark:text-teal-400 animate-pulse" />
+                      <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 italic">{applyVoiceText}</span>
+                    </div>
+                    <div className="flex gap-0.5 justify-center">
+                      {[1, 2, 3, 4].map((b) => (
+                        <div key={b} className="w-0.5 h-3 bg-teal-500 rounded-full animate-wave" style={{ animationDelay: `${b * 0.1}s` }} />
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4 text-slate-400" />
-                    <span>{job.distance} away</span>
-                  </div>
-                  <div className="col-span-2 flex items-center gap-1.5 text-xs text-slate-400">
-                    <Clock className="w-4 h-4" />
-                    <span>{job.location} • {job.date}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Application CTA */}
-              <div className="mt-6 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 flex gap-3">
-                {appliedJobs.includes(job.id) ? (
-                  <button className="flex-1 py-2.5 rounded-lg bg-emerald-500 text-white font-bold text-sm cursor-default flex items-center justify-center gap-2">
-                    <CheckCircle2 className="w-4.5 h-4.5" />
-                    Application Submitted
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => handleVoiceApply(job.id)}
-                      className="flex-1 py-2.5 rounded-lg bg-gradient-to-r from-govBlue-500 to-teal-600 hover:shadow-lg text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 group"
-                    >
-                      <Mic className="w-4 h-4 animate-pulse" />
-                      Apply by Voice
-                    </button>
-                    <button
-                      onClick={() => setAppliedJobs((prev) => [...prev, job.id])}
-                      className={`px-4 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-colors ${
-                        darkMode ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
-                      }`}
-                    >
-                      Apply Manual
-                    </button>
-                  </>
                 )}
               </div>
-
-              {/* Voice Apply Modal Overlay Simulation Inside Card */}
-              {applyingJobId === job.id && isApplyingVoiceActive && (
-                <div className="mt-3 p-3 rounded-lg bg-teal-500/10 border border-teal-500/35 flex flex-col items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <Volume2 className="w-4 h-4 text-teal-600 dark:text-teal-400 animate-pulse" />
-                    <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 italic">{applyVoiceText}</span>
-                  </div>
-                  <div className="flex gap-0.5 justify-center">
-                    {[1, 2, 3, 4].map((b) => (
-                      <div key={b} className="w-0.5 h-3 bg-teal-500 rounded-full animate-wave" style={{ animationDelay: `${b * 0.1}s` }} />
-                    ))}
-                  </div>
-                </div>
-              )}
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12 text-slate-400">
+              No matching jobs found. Try adjusting your query or category filters.
             </div>
-          ))
-        ) : (
-          <div className="col-span-full text-center py-12 text-slate-400">
-            No matching jobs found. Try adjusting your query or category filters.
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
     </section>
   );

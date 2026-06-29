@@ -22,6 +22,7 @@ const verificationRoutes = require('./routes/verification');
 const farmerRoutes = require('./routes/farmer');
 const notificationRoutes = require('./routes/notifications');
 const reviewRoutes = require('./routes/reviews');
+const schemesRoutes = require('./routes/schemes');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/api/verification', verificationRoutes);
 app.use('/api/farmer', farmerRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/schemes', schemesRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

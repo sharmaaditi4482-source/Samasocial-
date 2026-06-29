@@ -199,15 +199,18 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className={`${darkMode ? 'glass-card-dark' : 'glass-card'} p-5 border border-slate-200/50 dark:border-slate-800 flex gap-4 items-center`}>
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0">
+            <button
+              onClick={() => onNavigate('government-schemes')}
+              className={`${darkMode ? 'glass-card-dark' : 'glass-card'} p-5 border border-slate-200/50 dark:border-slate-800 flex gap-4 items-center hover:border-teal-500/30 transition-all group hover:scale-[1.02] text-left`}
+            >
+              <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
                 <Building2 className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-slate-900 dark:text-white">Govt. Schemes</h4>
+                <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-teal-500 transition-colors">Govt. Schemes</h4>
                 <p className="text-xs text-slate-400 mt-0.5">PM-Kisan, PM-Shram Yogi Mandhan, eligibility check.</p>
               </div>
-            </div>
+            </button>
           </div>
         </div>
 
