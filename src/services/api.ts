@@ -1,10 +1,6 @@
-/**
- * Frontend API Service — Phase 2
- * Centralized fetch wrapper for all backend API calls.
- * Base URL: http://localhost:5000/api
- */
 
-const API_BASE = 'http://localhost:5000/api';
+
+const API_BASE = 'https://samasocial.onrender.com/api';
 
 function getToken(): string | null {
   return localStorage.getItem('jeevansetu_token');
